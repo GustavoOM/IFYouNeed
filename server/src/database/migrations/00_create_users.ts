@@ -7,11 +7,11 @@ export async function up(knex: Knex){
   `uuid_generate_v4()`;
 
     return knex.schema.createTable("users", table => {
-        table.increments("id").primary()
-        //table.uuid('id').primary().defaultTo(knex.raw(uuidGenerationRaw));
+        table.uuid('id').primary().defaultTo(knex.raw(uuidGenerationRaw));
         table.string("name").notNullable()
         table.string("avatar").notNullable()
         table.string("whatsapp").notNullable()
+        table.string("email").notNullable()
         table.string("bio").notNullable()
         table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable()
         table.timestamp("updated_at").defaultTo(knex.fn.now()).notNullable()

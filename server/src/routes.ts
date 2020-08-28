@@ -1,19 +1,24 @@
 import express from "express"
-import ClassesController from "./controllers/ClassesController";
-import ConnectionsController from "./controllers/ConnectionsController";
+import db from "./database/connection"
+import {Request, Response} from "express"
+import ReinforcementsController from "./controllers/ReinforcementsController";
+import UsersController from "./controllers/UsersController";
 
 const routes = express.Router()
-const classesController = new ClassesController()
-const connectionsController = new ConnectionsController()
+const reinforcementController = new ReinforcementsController()
+const usersController = new UsersController()
 
+routes.post("/users", usersController.create)
+routes.get("/users", usersController.index)
+routes.get("/users/:id", async(request:Request,response:Response)=>{
+    const findedUser = await db.from("users").select().where("users.id", "=", request.params.id)
+    
+    response.json(findedUser)
 
+})
 
+routes.post("/reinforcements", reinforcementController.create)
+routes.get("/reinforcements", reinforcementController.index)
 
-routes.post("/classes", classesController.create)
-routes.get("/classes", classesController.index)
-
-
-routes.post("/connections", connectionsController.create)
-routes.get("/connections", connectionsController.index)
 
 export default routes;

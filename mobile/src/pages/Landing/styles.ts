@@ -3,9 +3,10 @@ import {StyleSheet} from "react-native"
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#8257E5",
+        backgroundColor: "#342C2C",
         justifyContent: "center",
-        padding: 40,
+        padding: 10,
+        paddingBottom: 0,
     },
     banner:{
         width: "100%",
@@ -53,7 +54,14 @@ const styles = StyleSheet.create({
         marginTop: 40,
         fontSize: 12,
         lineHeight: 20,
-    
+    },
+    card:{
+        resizeMode: "contain",
+        marginBottom: 10,
+        alignSelf: "center",
+    },
+    cardList:{
+        marginTop: -40,
     }
 })
 

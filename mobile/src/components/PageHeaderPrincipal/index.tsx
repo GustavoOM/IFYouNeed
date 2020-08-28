@@ -2,19 +2,18 @@ import React, { ReactNode } from "react"
 import { View, Image, Text } from "react-native"
 
 import styles from "./styles"
-import { BorderlessButton, RectButton } from "react-native-gesture-handler"
 import { useNavigation } from "@react-navigation/native"
+
 import HeaderLogo from "../../assets/images/HeaderLogo.png"
-import MenuIcon from "../../assets/images/icons/MenuIcon.png"
 import ImagemPerfilExemplo from "../../assets/images/ImagemPerfilExemplo.png"
+import { RectButton } from "react-native-gesture-handler"
 
-
-interface IPageHeaderProps{
+interface IPageHeaderPrincipalProps{
     title: string;
     headerRight?: ReactNode
 }
 
-const PageHeader: React.FC<IPageHeaderProps> = ({title, headerRight, children}) => {
+const PageHeaderPrincipal: React.FC<IPageHeaderPrincipalProps> = ({title, headerRight, children}) => {
     const {navigate} = useNavigation()
     function handleGoBack(){
         navigate("Landing")
@@ -23,23 +22,18 @@ const PageHeader: React.FC<IPageHeaderProps> = ({title, headerRight, children}) 
     return(
         <View style={styles.container}>
             <View style={styles.topBar}>
-                <BorderlessButton>
-                    <Image source={MenuIcon} resizeMode="contain"/>
-                </BorderlessButton>
-                <RectButton onPress={handleGoBack}>
-                    <Image source={HeaderLogo} resizeMode="contain"/>
+                <Image source={HeaderLogo} style={styles.logo}/>
+                <RectButton style={styles.userButton}>
+                    <Text style={styles.userName}>Luciana</Text>
+                    <Image source={ImagemPerfilExemplo} style={styles.avatar} />
                 </RectButton>
-                <BorderlessButton>
-                    <Image source={ImagemPerfilExemplo} resizeMode="contain"/>
-                </BorderlessButton>
             </View>
             <View style={styles.header}>
                 <Text style={styles.title}>{title}</Text>
-                {headerRight}
             </View>
             {children}
         </View>
     )
 }
 
-export default PageHeader
+export default PageHeaderPrincipal

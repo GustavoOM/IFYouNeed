@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from "react"
-import {View, Image, Text} from "react-native"
+import {View, Image, Text, ScrollView} from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { RectButton } from "react-native-gesture-handler"
 
 
+import PageHeader from "../../components/PageHeader"
 import landingImg from "../../assets/images/landing.png" 
 import studyIcon from "../../assets/images/icons/study.png"
 import giveClassesIcon from "../../assets/images/icons/give-classes.png"
 import heartICon from "../../assets/images/icons/heart.png"
 import api from "../../services/api"
 
+import CardAchadosPerdidos from "../../assets/images/CardAchadosPerdidos.png" 
+import CardCaronaColetiva from "../../assets/images/CardCaronaColetiva.png"
+import CardContraturno from "../../assets/images/CardContraturno.png" 
+import CardDescubraProjetos from "../../assets/images/CardDescubraProjetos.png" 
+import CardHorárioDeAulas from "../../assets/images/CardHorárioDeAulas.png" 
+import CardServidoresDoIFPR from "../../assets/images/CardServidoresDoIFPR.png" 
+import HeaderLogo from "../../assets/images/HeaderLogo.png" 
+import ImagemPerfilExemplo from "../../assets/images/ImagemPerfilExemplo.png" 
+import Logo from "../../assets/images/Logo.png" 
+
+
 import styles from "./styles"
+import PageHeaderPrincipal from "../../components/PageHeaderPrincipal"
 function Landing(){
     const {navigate} = useNavigation()
-    const [totalConnections, setTotalConnections] = useState(0)
-
-    useEffect(() => {
-        api.get("connections").then(response => {
-            const {total} = response.data
-
-            setTotalConnections(total)
-        })
-    }, [])
     
     function handleNavigateToGiveClassesPage(){
         navigate("GiveClasses")
@@ -32,29 +36,31 @@ function Landing(){
     }
 
     return (
-        <View style={styles.container}>
-            <Image source={landingImg} style={styles.banner} />
-            <Text style={styles.title} >
-                Saudações, {"\n"}
-                <Text style={styles.titleBold}>
-                    O que deseja fazer?
-                </Text>
-            </Text>
-            <View style={styles.buttonsContainer}>
-                <RectButton onPress={handleNavigateToStudyPages} style={[styles.button, styles.buttonPrimary]} >
-                    <Image source={studyIcon} />
-                    <Text style={styles.buttonText}>Estudar</Text>
-                </RectButton>
-                <RectButton onPress={handleNavigateToGiveClassesPage} style={[styles.button, styles.buttonSecondary]} >
-                    <Image source={giveClassesIcon} />
-                    <Text style={styles.buttonText}>Dar aula</Text>
-                </RectButton>
+        <>
+            <PageHeaderPrincipal title={"O que você precisa?"}/>
+            <View style={styles.container}>
+                <ScrollView style={styles.cardList}>
+                    <RectButton onPress={handleNavigateToStudyPages}>
+                        <Image style={styles.card} source={CardContraturno}/>
+                    </RectButton>
+                    <RectButton onPress={handleNavigateToGiveClassesPage}>
+                        <Image style={styles.card} source={CardServidoresDoIFPR}/>
+                    </RectButton>
+                    <RectButton onPress={handleNavigateToGiveClassesPage}>
+                        <Image style={styles.card} source={CardHorárioDeAulas}/>
+                    </RectButton>
+                    <RectButton onPress={handleNavigateToGiveClassesPage}>
+                        <Image style={styles.card} source={CardAchadosPerdidos}/>
+                    </RectButton>
+                    <RectButton onPress={handleNavigateToGiveClassesPage}>
+                        <Image style={styles.card} source={CardDescubraProjetos}/>
+                    </RectButton>
+                    <RectButton onPress={handleNavigateToGiveClassesPage}>
+                        <Image style={styles.card} source={CardCaronaColetiva}/>
+                    </RectButton>
+                </ScrollView>
             </View>
-            <Text style={styles.totalConnections}>
-                Total de {totalConnections} conexões já realizadas {" "}
-                <Image source={heartICon}/>
-            </Text>
-        </View>
+        </>
     )
 }
 

@@ -23,13 +23,11 @@ const styles = StyleSheet.create({
         width: "48%",
     },
     input:{
-        height: 54,
-        backgroundColor: "#FFF",
-        borderRadius: 8,
+        height: "100%",
+        borderRadius: 40,
         justifyContent: "center",
         paddingHorizontal: 16, 
-        marginTop: 4,
-        marginBottom: 16,
+        
     },
     submitButton:{
         backgroundColor: "#04d361",
@@ -45,6 +43,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 16,
     },
+    pickerContainer:{
+        height: 54,
+        borderWidth:2,
+        borderColor:'#c2c2c1',
+        borderRadius:5,
+        backgroundColor: "#FFF",
+        marginTop: 4,
+        marginBottom: 16,
+    }
 
 })
 

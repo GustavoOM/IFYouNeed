@@ -11,37 +11,48 @@ const styles = StyleSheet.create({
     },
 
     profile:{
-        flexDirection: "row",
         alignItems: "center",
         padding: 24,
     },
 
+    
+    profileInfo:{
+        alignItems:"center",
+    },
+    
+    name: {
+        fontFamily:"Poppins_400Regular",
+        color: "#6a6180",
+        fontSize: 16,
+        marginTop: 4,
+    },
+    subject:{
+        fontFamily: "Archivo_700Bold",
+        color: "#32264d",
+        fontSize: 22,
+    },
+    
+    bioContainer:{
+        marginHorizontal: 10,
+        paddingHorizontal: 10,
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "row",
+    },
+    
     avatar:{
         width: 64,
         height: 64,
         borderRadius: 32,
-        backgroundColor: "#eee"
+        backgroundColor: "#eee",
+        borderColor:"#00A144",
+        borderWidth: 1,
     },
-
-    profileInfo:{
-        marginLeft: 16,
-    },
-
-    name: {
-        fontFamily: "Archivo_700Bold",
-        color: "#32264d",
-        fontSize: 20,
-
-    },
-    subject:{
-        fontFamily:"Poppins_400Regular",
-        color: "#6a6180",
-        fontSize: 12,
-        marginTop: 4,
-    },
-
     bio:{
-        marginHorizontal: 24,
+        textAlign: "justify",
+        paddingRight: 75,
+        width: "100%",
+        marginHorizontal: 10,
         fontFamily: "Poppins_400Regular",
         fontSize: 14,
         lineHeight: 24,
@@ -56,12 +67,12 @@ const styles = StyleSheet.create({
     price:{
         fontFamily:"Poppins_400Regular",
         color: "#6a6180",
-        fontSize: 14,
+        fontSize: 18,
     },
     priceValue:{
         fontFamily: "Archivo_700Bold",
         color: "#8257e5",
-        fontSize: 16,
+        fontSize: 20,
     },
     buttonsContainer:{
         flexDirection: "row",
@@ -79,21 +90,29 @@ const styles = StyleSheet.create({
     favorited:{
         backgroundColor: "#e33d3d"
     },
-    contactButton:{
-        backgroundColor: "#04d361",
+    contactWhatsappButton:{
+        backgroundColor: "#3F8439",
         flex: 1,
         height: 56,
         borderRadius: 8,
         justifyContent: "center",
         alignItems: "center",
         marginRight: 8,
-        flexDirection: "row",
+    },
+    contactMailButton:{
+        backgroundColor: "#C43828",
+        flex: 1,
+        height: 56,
+        borderRadius: 8,
+        justifyContent: "center",
+        alignItems: "center",
+        marginRight: 8,
     },
     contactButtonText:{
+        textAlign: "center",
         color: "#FFF",
         fontFamily: "Archivo_700Bold",
-        fontSize: 16,
-        marginLeft: 16,
+        fontSize: 14
     }
 
 })
